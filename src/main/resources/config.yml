@@ -1,0 +1,42 @@
+# =========================================================
+#  MDBoostScheduler
+#  Activa boosters globales de AxBoosters cada X tiempo.
+#  No arranca solo: usa /mdboost start para iniciar el ciclo,
+#  /mdboost stop para detenerlo, /mdboost status para ver el
+#  estado, /mdboost reload para recargar este archivo.
+# =========================================================
+
+# lista de boosters programados
+# cada entrada es completamente independiente y configurable:
+#   booster-type      -> nombre del archivo en boosters/ (sin .yml) de AxBoosters
+#                         ejemplo: experience-booster, essence-booster, sell-booster
+#   multiplier         -> porcentaje del boost (30 = +30%)
+#   duration-minutes   -> cuanto dura el boost activo, en minutos
+#   interval-minutes   -> cada cuanto tiempo se vuelve a activar, en minutos
+#   enabled            -> true/false para prender o apagar esta entrada sin borrarla
+boosters:
+  xp-azada:
+    booster-type: experience-booster
+    multiplier: 30
+    duration-minutes: 10
+    interval-minutes: 60
+    enabled: true
+
+  # ejemplo adicional, deshabilitado por defecto
+  # copia este bloque y cambialo para agregar mas boosters programados
+  essence-hora:
+    booster-type: essence-booster
+    multiplier: 20
+    duration-minutes: 10
+    interval-minutes: 60
+    enabled: false
+
+  sell-fin-de-semana:
+    booster-type: sell-booster
+    multiplier: 15
+    duration-minutes: 15
+    interval-minutes: 120
+    enabled: false
+
+# mensaje en consola cada vez que se activa un booster programado
+log-on-trigger: true
