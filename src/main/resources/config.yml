@@ -1,10 +1,16 @@
 # =========================================================
 #  MDBoostScheduler
 #  Activa boosters globales de AxBoosters cada X tiempo.
-#  No arranca solo: usa /mdboost start para iniciar el ciclo,
-#  /mdboost stop para detenerlo, /mdboost status para ver el
-#  estado, /mdboost reload para recargar este archivo.
+#  Usa /mdboost start para iniciar el ciclo, /mdboost stop
+#  para detenerlo, /mdboost status para ver el estado,
+#  /mdboost reload para recargar este archivo.
 # =========================================================
+
+# si es true, el ciclo de boosters arranca solo cuando el
+# server enciende (equivale a hacer /mdboost start automatico).
+# si es false, siempre tenes que hacer /mdboost start a mano
+# despues de cada reinicio del server.
+auto-start: false
 
 # lista de boosters programados
 # cada entrada es completamente independiente y configurable:
