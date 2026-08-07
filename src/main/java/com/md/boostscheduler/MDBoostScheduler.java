@@ -25,7 +25,13 @@ public class MDBoostScheduler extends JavaPlugin {
         getCommand("mdboost").setTabCompleter(executor);
 
         log.info("MDBoostScheduler cargado. " + schedules.size() + " booster(s) configurado(s).");
-        log.info("Usa /mdboost start para iniciar el ciclo de boosters.");
+
+        if (getConfig().getBoolean("auto-start", false)) {
+            startAll();
+            log.info("auto-start esta en true: ciclo de boosters iniciado automaticamente.");
+        } else {
+            log.info("Usa /mdboost start para iniciar el ciclo de boosters.");
+        }
     }
 
     @Override
@@ -63,6 +69,13 @@ public class MDBoostScheduler extends JavaPlugin {
             }
             if (durationMinutes <= 0) {
                 log.warning("Booster '" + id + "' tiene duration-minutes invalido (" + durationMinutes + "), se omite.");
+                continue;
+            }
+            if (intervalMinutes < durationMinutes) {
+                log.warning("Booster '" + id + "' tiene interval-minutes (" + intervalMinutes
+                        + ") menor a duration-minutes (" + durationMinutes
+                        + "). Esto haria que se solapen 2 boosts a la vez, asi que se omite."
+                        + " Pone interval-minutes igual o mayor a duration-minutes.");
                 continue;
             }
 
