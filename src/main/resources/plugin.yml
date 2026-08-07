@@ -1,0 +1,18 @@
+name: MDBoostScheduler
+version: '1.0.0'
+main: com.md.boostscheduler.MDBoostScheduler
+api-version: '1.21'
+author: Matias
+description: Activa boosters globales de AxBoosters de forma periodica y configurable.
+
+commands:
+  mdboost:
+    description: Controla el scheduler de boosters globales
+    usage: /mdboost <start|stop|status|reload>
+    permission: mdboost.admin
+    permission-message: '&cNo tenes permiso para usar este comando.'
+
+permissions:
+  mdboost.admin:
+    description: Permite controlar el scheduler de boosters
+    default: op
